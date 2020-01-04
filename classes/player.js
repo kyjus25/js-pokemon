@@ -1,6 +1,6 @@
 function Player() {
 
-  let pos = [0, 0];
+  let pos = [(width / 2) - 40, (height / 2) - 40];
 
   this.setPosition = function (x, y) {
     pos = [x, y];
@@ -11,7 +11,9 @@ function Player() {
   }
 
   this.render = function (ctx) {
-    // ctx.fillRect((width / 2) - 80, (height / 2) - 80, 80, 80);
     ctx.fillRect(pos[0], pos[1], 80, 80);
+
+    ctx.fillStyle = 'red';
+    ctx.fillRect(width / 2, height / 2, 2, 2);
   }
 }

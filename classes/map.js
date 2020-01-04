@@ -11,10 +11,11 @@ function Map() {
   let futureDirection = 'none';
 
   this.setup = function () {
-      spawn[0] = (width / 2) - 80;
-      spawn[1] = (height / 2) - 80;
+      let playerStartX = 80 * 3;
+      let playerStartY = 80 * 3;
 
-      player.setPosition(spawn[0], spawn[1]);
+      spawn[0] = ((width / 2) - 40) - playerStartX;
+      spawn[1] = ((height / 2) - 40) - playerStartY;
   }
 
   this.move = function (key) {
