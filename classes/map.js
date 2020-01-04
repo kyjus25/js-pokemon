@@ -49,6 +49,7 @@ function Map() {
     if (pos[0] === futurePosition[0] && pos[1] === futurePosition[1]) {
       moving = false;
       prevPosition = futurePosition;
+      player.stopAnimation();
     } else {
       player.playAnimation(futureDirection);
       switch(futureDirection) {
