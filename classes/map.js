@@ -1,12 +1,21 @@
 function Map() {
   let speed = 4;
 
+  let spawn = [0, 0];
+
   let pos = [0, 0];
 
   let moving = false;
   let prevPosition = [0, 0];
   let futurePosition = [0, 0];
   let futureDirection = 'none';
+
+  this.setup = function () {
+      spawn[0] = (width / 2) - 80;
+      spawn[1] = (height / 2) - 80;
+
+      player.setPosition(spawn[0], spawn[1]);
+  }
 
   this.move = function (key) {
     if (moving === false) {
@@ -29,7 +38,6 @@ function Map() {
           break;
       }
     }
-
   }
 
   this.beginLerp = function () {
@@ -79,8 +87,8 @@ function Map() {
 
     for (let i = 0; i < 100; i++) {
       for (let j = 0; j < 100; j++) {
-        const positionX = i * 80 - pos[0];
-        const positionY = j * 80 - pos[1];
+        const positionX = i * 80 + spawn[0] - pos[0];
+        const positionY = j * 80 + spawn[1] - pos[1];
         ctx.drawImage(map,x * 16,y * 16,16,16,positionX,positionY,80,80);
       }
     }

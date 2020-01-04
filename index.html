@@ -51,6 +51,8 @@
          handler.new(map);
          handler.new(player);
 
+         map.setup();
+
          function loop(timestamp) {
            var progress = (timestamp - lastRender);
 
