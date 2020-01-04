@@ -11,30 +11,30 @@ function Map() {
   let futureDirection = 'none';
 
   this.setup = function () {
-      let playerStartX = 80 * 3;
-      let playerStartY = 80 * 3;
+      let playerStartX = scale * 3;
+      let playerStartY = scale * 3;
 
-      spawn[0] = ((width / 2) - 40) - playerStartX;
-      spawn[1] = ((height / 2) - 40) - playerStartY;
+      spawn[0] = ((width / 2) - (scale / 2)) - playerStartX;
+      spawn[1] = ((height / 2) - (scale / 2)) - playerStartY;
   }
 
   this.move = function (key) {
     if (moving === false) {
       switch(key) {
         case 'w':
-          futurePosition = [pos[0], pos[1] - 80];
+          futurePosition = [pos[0], pos[1] - scale];
           futureDirection = 'w';
           break;
         case 'a':
-          futurePosition = [pos[0] - 80, pos[1]];
+          futurePosition = [pos[0] - scale, pos[1]];
           futureDirection = 'a';
           break;
         case 's':
-            futurePosition = [pos[0], pos[1] + 80];
+            futurePosition = [pos[0], pos[1] + scale];
             futureDirection = 's';
           break;
         case 'd':
-            futurePosition = [pos[0] + 80, pos[1]];
+            futurePosition = [pos[0] + scale, pos[1]];
             futureDirection = 'd';
           break;
       }
@@ -88,9 +88,9 @@ function Map() {
 
     for (let i = 0; i < 100; i++) {
       for (let j = 0; j < 100; j++) {
-        const positionX = i * 80 + spawn[0] - pos[0];
-        const positionY = j * 80 + spawn[1] - pos[1];
-        ctx.drawImage(map,x * 16,y * 16,16,16,positionX,positionY,80,80);
+        const positionX = i * scale + spawn[0] - pos[0];
+        const positionY = j * scale + spawn[1] - pos[1];
+        ctx.drawImage(map,x * 16,y * 16,16,16,positionX,positionY,scale,scale);
       }
     }
   }
