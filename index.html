@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Test</title>
+    <meta charset="UTF-8">
+    <style>
+        html, body {
+           margin: 0;
+           padding: 0;
+         }
+
+         canvas {
+           background: #000;
+           height: 100%;
+           width: 100%;
+           display: block
+         }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" /></canvas>
+    <img src="images/pokemon.png" id="map" width="0" height="0" style="display: none;">
+
+    <script src="classes/keyboard.js"></script>
+    <script src="classes/handler.js"></script>
+    <script src="classes/map.js"></script>
+    <script src="classes/player.js"></script>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+         var ctx = canvas.getContext("2d");
+         var width;
+         var height;
+
+         var resize = function() {
+           width = window.innerWidth * 2;
+           height = window.innerHeight * 2;
+           canvas.width = width;
+           canvas.height = height;
+         }
+         window.onresize = resize;
+         resize();
+
+         ctx.fillStyle = 'red';
+
+         let handler = new Handler();
+         let map = new Map();
+         let player = new Player();
+         handler.new(map);
+         handler.new(player);
+
+         function loop(timestamp) {
+           var progress = (timestamp - lastRender);
+
+            handler.update(progress);
+            handler.render(ctx);
+
+           lastRender = timestamp;
+           window.requestAnimationFrame(loop);
+         }
+         var lastRender = 0;
+         window.requestAnimationFrame(loop);
+    </script>
+</body>
+
+</html>
