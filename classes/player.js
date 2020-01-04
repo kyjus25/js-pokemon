@@ -30,7 +30,6 @@ function Player() {
     if (animation[0] > 3) {
       animation[0] = 0;
     }
-    console.log('animation', animation);
   }
 
   this.update = function (progress) {

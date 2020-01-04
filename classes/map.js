@@ -50,6 +50,7 @@ function Map() {
       moving = false;
       prevPosition = futurePosition;
     } else {
+      player.playAnimation(futureDirection);
       switch(futureDirection) {
         case 'w':
           pos[1] -= speed;
